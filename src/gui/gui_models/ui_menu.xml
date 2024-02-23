@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<uimenu>
+    <hello>
+       ########################
+        # ¡Welcome to Uolmart! #
+        ########################
+   </hello>
+    <principal_menu>
+        ##### Main Menu ########
+        # 1. Register Product  #
+        # 2. Register Customer #
+        # 3. Make a Purchase   #
+        # 4. Purchase Report   #
+        # 5. Student's Data    #
+        # 6. Exit Program      #
+        ########################
+    </principal_menu>
+    <shopping_menu>
+        ########## Shopping Menu ###############
+        # 1. Add Product                       #
+        # 2. Complete The Purchase and Invoice #
+        ########################################
+    </shopping_menu>
+    <student_data>
+        ########### ¡Hello Dude! ##################
+        # My name is Edy Rolando Rojas González   #
+        # My ID card number (carnet) is 201730511 #
+        ###########################################
+    </student_data>
+    <new_product>
+        ######## Add new Product ########
+    </new_product>
+    <new_customer>
+        ######## Add new Customer #######
+    </new_customer>
+    <new_purchase>
+        ######## Add new Purchase #######
+    </new_purchase>
+    <question_yorn>Please enter: y(Yes) or n(No)</question_yorn>
+    <back_to_principal_menu>#### Back to main menu... ####</back_to_principal_menu>
+</uimenu>
