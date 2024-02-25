@@ -9,4 +9,5 @@ class Product:
         return (f'Code Product: {self.code_product}, Name Product: {self.name}, Description: {self.description}, Unit '
                 f'Price: {self.unit_price}')
 
-
+    def get_code(self):
+        return self.code_product

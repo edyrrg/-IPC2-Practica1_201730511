@@ -5,7 +5,7 @@ from src.controllers.handler_input_user import handler_number_response_user as m
 from src.controllers.handler_input_user import handler_yorn_response_user as my_input_response_yorn
 from src.models.customer import Customer
 
-from src.models.producto import Product
+from src.models.product import Product
 
 
 class GUI(object):
@@ -25,9 +25,9 @@ class GUI(object):
                 new_customer = self.add_new_customer()
                 self.core_controller.add_customer_to_list(new_customer)
             elif response_user == 3:
-                self.add_new_purchase()
+                print(self.search_product())
             elif response_user == 4:
-                print("Option 4")
+                self.init_shopping_menu()
             elif response_user == 5:
                 self.show_student_data()
             elif response_user == 6:
@@ -53,12 +53,12 @@ class GUI(object):
                   f'\n\t    Unit Price - {product_unit_price}'
                   f'\n\t    Description Product - {product_description}'
                   f'\n\t    This product data is correct?'
-                  f'\n{self.ui_data['Q_yorn']}')
+                  f'\n{self.ui_data['question_yorn']}')
             is_correct = my_input_response_yorn()
             if is_correct:
                 return Product(product_code, product_name, product_description, product_unit_price)
             elif is_correct is False:
-                print(f'\n\t    Re-enter the product data again or return to the main menu?\n{self.ui_data['Q_yorn']}')
+                print(f'\n\t    Re-enter the product data again or return to the main menu?\n{self.ui_data['question_yorn']}')
                 is_correct = my_input_response_yorn()
                 if is_correct is False:
                     return None
@@ -89,13 +89,19 @@ class GUI(object):
     def add_new_purchase(self):
         print(self.ui_data['new_purchase'])
         while True:
-            if self.search_customer() is None:
-                print(self.ui_data['back_to_principal_menu'])
+            customer_target = self.search_customer()
+            if customer_target is not None:
+                print(f'\n\t    The customer selection\n\t    {customer_target.__str__()}')
+            else:
+                print('\n\t    Customer not found - back to main menu')
                 break
+
+
+
 
     def search_customer(self):
         while True:
-            print('\t    Enter NIT Customer to search')
+            print('\t    Enter NIT Customer to search for...')
             customer_nit = my_input_response_number()
             res = self.core_controller.search_customer_by_nit(customer_nit)
             if res is not None:
@@ -105,4 +111,35 @@ class GUI(object):
             print(f'\t    {self.ui_data['question_yorn']}')
             is_response_continue = my_input_response_yorn()
             if is_response_continue is False:
+                print('\t    Customer not found...')
+                print(f'{self.ui_data['back_to_principal_menu']}')
                 return None
+
+    def search_product(self):
+        while True:
+            print('\t    Enter code product to search for add to purchase...')
+            product_code = my_input_response(3)
+            res = self.core_controller.search_product_by_code(product_code)
+            if res is not None:
+                return res
+            print('\t    There is no product with this Product Code...')
+            print(self.ui_data['question_yorn'])
+            responser_yorn = my_input_response_yorn()
+            if responser_yorn is True:
+                continue
+            else:
+                break
+
+
+    def init_shopping_menu(self):
+        while True:
+            print(self.ui_data["shopping_menu"])
+            response_user = my_input_option(1, 2)
+            if response_user == 1:
+                self.search_product()
+            elif response_user == 2:
+                print(self.ui_data["finishing_purchase"])
+                break
+            else:
+                print('Invalid option, occurs an error on my_input_option')
+

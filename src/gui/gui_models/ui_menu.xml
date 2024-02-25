@@ -38,4 +38,5 @@
     </new_purchase>
     <question_yorn>Please enter: y(Yes) or n(No)</question_yorn>
     <back_to_principal_menu>#### Back to main menu... ####</back_to_principal_menu>
+    <finishing_purchase>### Finishing shopping and generation invoice... ###</finishing_purchase>
 </uimenu>
