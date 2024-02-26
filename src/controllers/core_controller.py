@@ -36,3 +36,10 @@ class CoreController:
             if product.code_product == product_code:
                 return product
         return None
+
+    def print_report_purchase(self):
+        if len(self.purchase_list) == 0:
+            print("\t    No purchases generated yet...")
+            return
+        for purchase in self.purchase_list:
+            purchase.__str__()
