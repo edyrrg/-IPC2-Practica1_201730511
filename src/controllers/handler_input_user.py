@@ -43,4 +43,16 @@ def handler_yorn_response_user():
         elif user_response == "no" or user_response == "n" or user_response == "No":
             return False
         else:
-            print('\n\t    Please enter y(Yes) or n(No)')
+            print('\n\t    Please enter: y(Yes) or n(No)')
+
+
+def handler_continue_response_user():
+    while True:
+        user_response = input("\t    >_: ")
+        if (user_response == "continue" or user_response == "c" or user_response == "yes"
+                or user_response == "Yes" or user_response == "C" or user_response == "y"):
+            return True
+        elif user_response == "no" or user_response == "n" or user_response == "back":
+            return False
+        else:
+            print('\n\t    Please enter: c(Continue) or n(No)')

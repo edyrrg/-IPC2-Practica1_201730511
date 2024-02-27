@@ -28,16 +28,36 @@
         ###########################################
     </student_data>
     <new_product>
+        #################################
         ######## Add new Product ########
+        #################################
     </new_product>
     <new_customer>
+        #################################
         ######## Add new Customer #######
+        #################################
     </new_customer>
     <new_purchase>
+        #################################
         ######## Add new Purchase #######
+        #################################
     </new_purchase>
+    <good_bye>
+        ###############################
+        #### Ending the program... ####
+        ####### Goodbye User :D #######
+        ###############################
+    </good_bye>
     <question_yorn>Please enter: y(Yes) or n(No)</question_yorn>
     <back_to_principal_menu>#### Back to main menu... ####</back_to_principal_menu>
     <finishing_purchase>### Finishing shopping and generation invoice... ###</finishing_purchase>
     <continue_searching>## Continue searching?... ##</continue_searching>
+    <purchase_list_is_empty>### No purchases generated yet... ###</purchase_list_is_empty>
+    <code_product_to_search>## Enter code product to search for add to purchase list... ##</code_product_to_search>
+    <not_product_found>## There is no product with this Product Code... ##</not_product_found>
+    <nit_customer_to_search>## Enter NIT Customer to search for... ##</nit_customer_to_search>
+    <not_customer_found>## There is no customer with this NIT ##</not_customer_found>
+    <customer_pick>## The customer pick... ##</customer_pick>
+    <re_enter_customer_data>## Re-enter the customer data again or return to the main menu? ##</re_enter_customer_data>
+    <re_enter_product_data>## Re-enter the product data again or return to the main menu? ##</re_enter_product_data>
 </uimenu>

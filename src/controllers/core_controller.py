@@ -9,7 +9,7 @@ class CoreController:
             return
         self.customer_list.append(new_customer)
         for customer in self.customer_list:
-            print(customer)
+            print(f'\n{customer}')
 
     def add_product_to_list(self, new_product):
         if new_product is None:
@@ -23,7 +23,7 @@ class CoreController:
             return
         self.purchase_list.append(new_purchase)
         for purchase in self.purchase_list:
-            print(purchase)
+            print(purchase.__str__())
 
     def search_customer_by_nit(self, nit):
         for customer in self.customer_list:
@@ -39,7 +39,6 @@ class CoreController:
 
     def print_report_purchase(self):
         if len(self.purchase_list) == 0:
-            print("\t    No purchases generated yet...")
-            return
+            print(f'\n\t    ### No purchases generated yet... ###')
         for purchase in self.purchase_list:
             purchase.__str__()

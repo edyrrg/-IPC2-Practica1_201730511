@@ -5,7 +5,9 @@ class Customer:
         self.nit = nit
 
     def __str__(self):
-        return f'Name: {self.name}, Email: {self.email}, NIT: {self.nit}'
+        return (f'\t    Name: {self.name}\n'
+                f'\t    Email: {self.email}\n'
+                f'\t    NIT: {self.nit}')
 
     def get_nit(self):
         return self.nit
