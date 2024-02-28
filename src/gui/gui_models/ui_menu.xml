@@ -58,6 +58,7 @@
     <not_product_found>## There is no product with this Product Code... ##</not_product_found>
     <nit_customer_to_search>## Enter NIT Customer to search for... ##</nit_customer_to_search>
     <not_customer_found>## There is no customer with this NIT ##</not_customer_found>
+    <not_purchase_found>## There is no purchase with this ID ##</not_purchase_found>
     <customer_pick>## The customer pick... ##</customer_pick>
     <re_enter_customer_data>## Re-enter the customer data again or return to the main menu? ##</re_enter_customer_data>
     <re_enter_product_data>## Re-enter the product data again or return to the main menu? ##</re_enter_product_data>

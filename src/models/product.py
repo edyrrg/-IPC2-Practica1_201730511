@@ -13,7 +13,7 @@ class Product:
         return (f'\t    Code Product: {self.code_product}\n'
                 f'\t    Name Product: {self.name}\n'
                 f'\t    Description: {self.description}\n'
-                f'\t    Unit Price: {self.unit_price}')
+                f'\t    Unit Price: Q{self.unit_price}')
 
     def get_code(self):
         return self.code_product

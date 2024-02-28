@@ -20,6 +20,6 @@ class Invoice:
 
     def __str__(self):
         return (f'\t    Invoice ID: {self.invoice_id}\n'
-                f'\t    Subtotal: {self.subtotal}\n'
-                f'\t    Tax: {self.tax}\n'
-                f'\t    Total: {self.total}')
+                f'\t    Subtotal: Q{self.subtotal}\n'
+                f'\t    Tax: Q{self.tax}\n'
+                f'\t    Total: Q{self.total}')

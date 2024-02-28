@@ -4,6 +4,7 @@ from src.controllers.handler_input_user import handler_response_user as my_input
 from src.controllers.handler_input_user import handler_number_response_user as my_input_response_number
 from src.controllers.handler_input_user import handler_yorn_response_user as my_input_response_yorn
 from src.controllers.handler_input_user import handler_continue_response_user as my_input_response_continue
+from src.controllers.handler_input_user import handler_price_value as my_input_value_price
 from src.models.customer import Customer
 
 from src.models.product import Product
@@ -31,10 +32,9 @@ class GUI(object):
             elif response_user == 3:
                 new_purchase = self.add_new_purchase()
                 if new_purchase is not None:
-                    new_purchase.generate_invoice()
                     self.core_controller.add_purchase_to_list(new_purchase)
             elif response_user == 4:
-                self.core_controller.print_report_purchase()
+                self.print_report_purchase()
             elif response_user == 5:
                 self.show_student_data()
             elif response_user == 6:
@@ -54,11 +54,11 @@ class GUI(object):
             print('\t    Enter description product:')
             product_description = my_input_response(8)
             print('\t    Enter unit price:')
-            product_unit_price = my_input_response_number()
+            product_unit_price = my_input_value_price()
             # f'\n\t    Code Product - {product_code}'
             print(f'\n\t    Name Product: {product_name}'
                   f'\n\t    Description product: {product_description}'
-                  f'\n\t    Unit Price: {product_unit_price}'
+                  f'\n\t    Unit Price: Q{product_unit_price}'
                   f'\n\n\t    This product data is correct?'
                   f'\n{self.ui_data['question_yorn']}')
             is_correct = my_input_response_yorn()
@@ -153,11 +153,32 @@ class GUI(object):
             print(self.ui_data['not_product_found'])
             print(self.ui_data['continue_searching'])
             print(self.ui_data['question_continue'])
-            response_yorn = my_input_response_continue()
-            if response_yorn is True:
+            response_continue = my_input_response_continue()
+            if response_continue is True:
                 continue
             else:
                 break
+
+    def print_report_purchase(self):
+        purchase_find = self.search_purchase()
+        if purchase_find is not None:
+            purchase_find.print_my_report()
+            print('\t   _____________________________')
+
+    def search_purchase(self):
+        while True:
+            print(self.ui_data['code_product_to_search'])
+            purchase_code = my_input_response_number()
+            res = self.core_controller.search_purchase_by_code(purchase_code)
+            if res is not None:
+                return res
+            print(self.ui_data['not_purchase_found'])
+            print(self.ui_data['continue_searching'])
+            print(self.ui_data['question_continue'])
+            response_continue = my_input_response_continue()
+            if response_continue is False:
+                print(f'{self.ui_data['back_to_principal_menu']}')
+                return None
 
     def init_shopping_menu(self, new_purchase):
         while True:

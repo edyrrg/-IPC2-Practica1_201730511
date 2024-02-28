@@ -1,5 +1,4 @@
 def handler_input_option(lower_limit, upper_limit):
-
     while True:
         try:
             user_response = int(input("\t    >_: "))
@@ -27,6 +26,18 @@ def handler_number_response_user():
     while True:
         try:
             user_response = int(input("\t    >_: "))
+            if user_response > 0:
+                return user_response
+            else:
+                print("\t    Only numbers greater than zero")
+        except ValueError:
+            print("\t    Enter only numbers")
+
+
+def handler_price_value():
+    while True:
+        try:
+            user_response = float(input("\t    >_: "))
             if user_response > 0:
                 return user_response
             else:

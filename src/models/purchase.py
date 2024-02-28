@@ -20,6 +20,15 @@ class Purchase:
         print(f'\t  Invoice Description\n'
               f'{self.invoice.__str__()}')
 
+    def print_my_report(self):
+        print(f'\t  ___ REPORT PURCHASE -- ID {self.id} ___\n'
+              f'\t  CUSTOMER:\n'
+              f'{self.customer.__str__()}\n'
+              f'\t  PURCHASED ITEMS:')
+        self.print_products()
+        print(f'\t  Invoice Description\n'
+              f'{self.invoice.__str__()}')
+
     def print_products(self):
         for product in self.products_list:
             print('\t    ----------------')
