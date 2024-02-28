@@ -48,7 +48,8 @@
         ####### Goodbye User :D #######
         ###############################
     </good_bye>
-    <question_yorn>Please enter: y(Yes) or n(No)</question_yorn>
+    <question_yorn>## Please enter: y(Yes) or n(No) ##</question_yorn>
+    <question_continue>## Please enter: c(Continue) or n(No) ##</question_continue>
     <back_to_principal_menu>#### Back to main menu... ####</back_to_principal_menu>
     <finishing_purchase>### Finishing shopping and generation invoice... ###</finishing_purchase>
     <continue_searching>## Continue searching?... ##</continue_searching>
@@ -60,4 +61,8 @@
     <customer_pick>## The customer pick... ##</customer_pick>
     <re_enter_customer_data>## Re-enter the customer data again or return to the main menu? ##</re_enter_customer_data>
     <re_enter_product_data>## Re-enter the product data again or return to the main menu? ##</re_enter_product_data>
+    <re_enter_purchase_data>## Re-enter the purchase data again or return to the main menu?</re_enter_purchase_data>
+    <empty_products_list>## Products list is EMPTY, please enter items... ##</empty_products_list>
+    <customer_list_is_empty>## Customer list is empty, please register customer before making a purchase ##</customer_list_is_empty>
+    <products_list_is_empty>## Products list is empty, please register products before making a purchase ##</products_list_is_empty>
 </uimenu>

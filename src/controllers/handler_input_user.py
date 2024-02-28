@@ -6,9 +6,9 @@ def handler_input_option(lower_limit, upper_limit):
             if lower_limit <= user_response <= upper_limit:
                 return user_response
             else:
-                print("\n\t    Only numbers are accepted in the list of menu options")
+                print("\t    Only numbers are accepted in the list of menu options")
         except ValueError:
-            print("\n\t    Enter only numbers")
+            print("\t    Enter only numbers")
 
 
 def handler_response_user(min_letters):
@@ -30,9 +30,9 @@ def handler_number_response_user():
             if user_response > 0:
                 return user_response
             else:
-                print("\n\t    Only numbers greater than zero")
+                print("\t    Only numbers greater than zero")
         except ValueError:
-            print("\n\t    Enter only numbers")
+            print("\t    Enter only numbers")
 
 
 def handler_yorn_response_user():

@@ -19,7 +19,7 @@ class Invoice:
         return self.total
 
     def __str__(self):
-        return (f'\t   Invoice ID: {self.invoice_id}\n'
-                f'\t   Subtotal: {self.subtotal}\n'
-                f'\t   Tax: {self.tax}\n'
-                f'\t   Total: {self.total}\n')
+        return (f'\t    Invoice ID: {self.invoice_id}\n'
+                f'\t    Subtotal: {self.subtotal}\n'
+                f'\t    Tax: {self.tax}\n'
+                f'\t    Total: {self.total}')

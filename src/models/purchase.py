@@ -12,17 +12,19 @@ class Purchase:
         self.invoice = None
 
     def __str__(self):
-        print(f'\n\t  PURCHASE ID {self.id}\n'
+        print(f'\t  PURCHASE ID - {self.id}\n'
               f'\t  CUSTOMER:\n'
               f'{self.customer.__str__()}\n'
-              f'\n\t  PURCHASED ITEMS:')
+              f'\t  PURCHASED ITEMS:')
         self.print_products()
         print(f'\t  Invoice Description\n'
-              f'\n{self.invoice.__str__()}')
+              f'{self.invoice.__str__()}')
 
     def print_products(self):
         for product in self.products_list:
+            print('\t    ----------------')
             print(product.__str__())
+        print('\t    ----------------')
 
     def get_products__str__(self):
         for product in self.products_list:
@@ -35,7 +37,13 @@ class Purchase:
             self.print_products()
 
     def generate_invoice(self):
+        if len(self.products_list) == 0:
+            return
         tmp = 0
         for product in self.products_list:
             tmp += product.get_unit_price()
         self.invoice = Invoice(tmp)
+
+    def products_list_is_empty(self):
+        if len(self.products_list) == 0:
+            return True

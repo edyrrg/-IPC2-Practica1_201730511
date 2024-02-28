@@ -3,6 +3,7 @@ from src.controllers.handler_input_user import handler_input_option as my_input_
 from src.controllers.handler_input_user import handler_response_user as my_input_response
 from src.controllers.handler_input_user import handler_number_response_user as my_input_response_number
 from src.controllers.handler_input_user import handler_yorn_response_user as my_input_response_yorn
+from src.controllers.handler_input_user import handler_continue_response_user as my_input_response_continue
 from src.models.customer import Customer
 
 from src.models.product import Product
@@ -15,20 +16,23 @@ class GUI(object):
         self.core_controller = CoreController()
 
     def init_core_ui(self):
-        print(f'\n{self.ui_data['hello']}')
+        print(f'{self.ui_data['hello']}')
         while True:
-            print(f'\n{self.ui_data['principal_menu']}')
+            print(f'{self.ui_data['principal_menu']}')
             response_user = my_input_option(1, 6)
             if response_user == 1:
                 new_product = self.add_new_product()
-                self.core_controller.add_product_to_list(new_product)
+                if new_product is not None:
+                    self.core_controller.add_product_to_list(new_product)
             elif response_user == 2:
                 new_customer = self.add_new_customer()
-                self.core_controller.add_customer_to_list(new_customer)
+                if new_customer is not None:
+                    self.core_controller.add_customer_to_list(new_customer)
             elif response_user == 3:
                 new_purchase = self.add_new_purchase()
-                new_purchase.generate_invoice()
-                self.core_controller.add_purchase_to_list(new_purchase)
+                if new_purchase is not None:
+                    new_purchase.generate_invoice()
+                    self.core_controller.add_purchase_to_list(new_purchase)
             elif response_user == 4:
                 self.core_controller.print_report_purchase()
             elif response_user == 5:
@@ -93,13 +97,36 @@ class GUI(object):
 
     def add_new_purchase(self):
         print(self.ui_data['new_purchase'])
-        customer_pick = self.search_customer()
-        if customer_pick is not None:
-            print(f'\n{self.ui_data['customer_pick']}\n'
-                  f'{customer_pick.__str__()}')
-            current_purchase = Purchase(customer_pick)
-            self.init_shopping_menu(current_purchase)
-            return current_purchase
+        if self.core_controller.products_data_list_is_empty() is True:
+            print(f'{self.ui_data['products_list_is_empty']}')
+            return None
+
+        if self.core_controller.customer_data_list_is_empty() is True:
+            print(f'{self.ui_data['customer_list_is_empty']}')
+            return None
+
+        while True:
+            customer_pick = self.search_customer()
+            if customer_pick is not None:
+                print(f'\n{self.ui_data['customer_pick']}\n'
+                      f'{customer_pick.__str__()}')
+                current_purchase = Purchase(customer_pick)
+                self.init_shopping_menu(current_purchase)
+                current_purchase.generate_invoice()
+                print('\t    -----------------')
+                current_purchase.__str__()
+                print('\t    -----------------')
+                print(f'\t    This purchase data is correct?'
+                      f'\n{self.ui_data['question_yorn']}')
+                is_correct = my_input_response_yorn()
+                if is_correct:
+                    return current_purchase
+                elif is_correct is False:
+                    print(f'\n{self.ui_data['re_enter_purchase_data']}'
+                          f'\n{self.ui_data['question_yorn']}')
+                    is_correct = my_input_response_yorn()
+                    if is_correct is False:
+                        return None
 
     def search_customer(self):
         while True:
@@ -110,8 +137,8 @@ class GUI(object):
                 return res
             print(self.ui_data['not_customer_found'])
             print(self.ui_data['continue_searching'])
-            print(f'\t    {self.ui_data['question_yorn']}')
-            is_response_continue = my_input_response_yorn()
+            print(f'\t    {self.ui_data['question_continue']}')
+            is_response_continue = my_input_response_continue()
             if is_response_continue is False:
                 print(f'{self.ui_data['back_to_principal_menu']}')
                 return None
@@ -125,8 +152,8 @@ class GUI(object):
                 return res
             print(self.ui_data['not_product_found'])
             print(self.ui_data['continue_searching'])
-            print(self.ui_data['question_yorn'])
-            response_yorn = my_input_response_yorn()
+            print(self.ui_data['question_continue'])
+            response_yorn = my_input_response_continue()
             if response_yorn is True:
                 continue
             else:
@@ -140,7 +167,10 @@ class GUI(object):
                 new_product = self.search_product()
                 new_purchase.add_product_to_purchase_list(new_product)
             elif response_user == 2:
-                print(self.ui_data["finishing_purchase"])
-                break
+                if new_purchase.products_list_is_empty() is not True:
+                    print(self.ui_data["finishing_purchase"])
+                    return
+                else:
+                    print(self.ui_data['empty_products_list'])
             else:
                 print('Invalid option, occurs an error on my_input_option')
